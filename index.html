@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Devox</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+        <form action="#" method="POST" id="createForm">
+                <h1>inscription</h1>
+                <label for="firstname">Firstname</label>
+                <input type="text" id="firstname">
+                <label for="lastname">Lastname</label>
+                <input type="text" id="lastname" >
+                <label for="period">Period</label>
+                <select name="period" id="period">
+                    <option value="1"> 1</option>
+                    <option value="2"> 2</option>
+                    <option value="3"> 3</option>
+                </select>
+                <button type="button" id="create">Create</button>
+            </form>
+            <script>
+
+                    let button = document.getElementById('create');
+                    
+                        button.onclick = () => {
+                    
+                        let firstname = document.getElementById('firstname').value;
+                        let lastname = document.getElementById('lastname').value;
+                        let period = document.getElementById('period').value;
+                        
+                        let xhr = new XMLHttpRequest();
+                        let url = "http://localhost:8080/devox/api/customers";
+                        xhr.open("POST", url , true);
+                        xhr.setRequestHeader("Content-Type", "application/json");
+                        let data = JSON.stringify({"firstname": firstname, "lastname": lastname, "period": period});
+                        xhr.send(data);
+                       
+                                }
+             </Script>
+    
+</body>
+</html>
